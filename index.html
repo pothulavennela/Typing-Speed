@@ -1,198 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Typing Test</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 30px;
-      background-color: #f5f5f5;
-      display: flex;
-      justify-content: center;
-    }
+    <meta charset="UTF-8">
+    <title>Typing Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+        }
 
-    .container {
-      width: 600px;
-    }
+        .container {
+            width: 600px;
+        }
 
-    #originalBox, #highlightBox {
-      border: 4px solid #0077ff;
-      border-radius: 10px;
-      padding: 16px;
-      margin-bottom: 20px;
-      background-color: grey;
-      font-size: 24px;
-      font-family: monospace;
-      line-height: 1.6;
-      min-height: 160px;
-      white-space: pre-wrap;
-      color: white;
-    }
+        #originalBox, #highlightBox {
+            border: 4px solid #0077ff;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 20px;
+            background-color: grey;
+            font-size: 24px;
+            font-family: monospace;
+            line-height: 1.6;
+            min-height: 160px;
+            white-space: pre-wrap;
+            color: white;
+        }
 
-    #typingWrapper {
-      position: relative;
-    }
+        #typingWrapper {
+            position: relative;
+        }
 
-    #typingBox {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      resize: none;
-      font-family: monospace;
-      font-size: 24px;
-      color: transparent;
-      background: transparent;
-      caret-color: black;
-      border: none;
-      outline: none;
-      padding: 16px;
-      z-index: 2;
-    }
+        #typingBox {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            resize: none;
+            font-family: monospace;
+            font-size: 24px;
+            color: transparent;
+            background: transparent;
+            caret-color: black;
+            border: none;
+            outline: none;
+            padding: 16px;
+            z-index: 2;
+        }
 
-    .wrong {
-      background-color: #ffb3b3;
-      color: red;
-      border-radius: 3px;
-      padding: 1px;
-    }
+        .wrong {
+            background-color: #ffb3b3;
+            color: red;
+            border-radius: 3px;
+            padding: 1px;
+        }
 
-    .correct {
-      color: green;
-    }
+        .correct {
+            color: green;
+        }
 
-    button {
-      padding: 10px 18px;
-      font-size: 18px;
-      border-radius: 6px;
-      background-color: #0077ff;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
+        button {
+            padding: 10px 18px;
+            font-size: 18px;
+            border-radius: 6px;
+            background-color: #0077ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
 
-    #result {
-      font-size: 22px;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-  </style>
+        #result {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
 
 <div class="container">
-  <div id="originalBox"></div>
+    <div id="originalBox"></div>
 
-  <div id="typingWrapper">
-    <div id="highlightBox"></div>
-    <textarea id="typingBox" disabled></textarea>
-  </div>
+    <div id="typingWrapper">
+        <div id="highlightBox"></div>
+        <textarea id="typingBox"></textarea>
+    </div>
 
-  <button onclick="start()">Start</button>
-  <p id="result"></p>
+    <button onclick="start()">Start</button>
+    <p id="result"></p>
 </div>
 
-<audio id="errorSound" src="200240615-whoosh-pop-02.m4a" preload="auto"></audio>
+<audio id="errorSound" src="C:\\Users\\user\\Downloads\200240615-whoosh-pop-02.m4a" preload="auto"></audio>
 
 <script>
-  // Text examples
-  const baseTwisters = [
-    "Twelve thin-thinking thinkers thought they thoroughly thought through thirty-three thick thunderous theories, though three thought thoughts turned thoroughly tangled.",
-    "Sassy Susan sewed six slippery satin sashes simultaneously while sipping spicy cider and singing songs from South Salem's shadowy stage.",
-    "Thick-throated Theo theatrically threw thirty-three thumbtacks through three thousand threadbare thistles thrice—thudding them thoroughly through.",
-    "Quick Quinn quarreled quietly with quirky Quentin over quirky quokka quizzes queued quietly in quantum quiz queues.",
-    "Frightfully flustered Freddy flung five filthy fleece flannels, flapping frantically from flaming flagpoles facing February’s ferocious fog.",
-    "Briskly, Brenda banged brittle brass bells behind Bob's big blueberry bakery before breakfast, bringing bemused barks from barking bulldogs.",
-    "Clattering clowns clumsily clashed cymbals while climbing crooked crates, creating chaotic choruses of cackling crows and crashing coconuts.",
-    "Kooky Kathy kept kicking kinked kites, caught climbing crooked chimneys, while kids kept counting colored crumbs clinging to cardboard castles.",
-    "George’s gigantic giraffe gently jogged around a jittery jungle gym juggling jelly jars and jumping jack-o’-lanterns joyfully.",
-    "Fumbling Felix fixed five flickering fluorescent fixtures with frozen fingers while facing forty furious fireflies flicking flames at his face."
-  ];
+    // Text examples
+    const baseTwisters = [
+        "Twelve thin-thinking thinkers thought they thoroughly thought through thirty-three thick thunderous theories, though three thought thoughts turned thoroughly tangled.",
+        "Sassy Susan sewed six slippery satin sashes simultaneously while sipping spicy cider and singing songs from South Salem's shadowy stage.",
+        "Thick-throated Theo theatrically threw thirty-three thumbtacks through three thousand threadbare thistles thrice—thudding them thoroughly through.",
+        "Quick Quinn quarreled quietly with quirky Quentin over quirky quokka quizzes queued quietly in quantum quiz queues.",
+        "Frightfully flustered Freddy flung five filthy fleece flannels, flapping frantically from flaming flagpoles facing February’s ferocious fog.",
+        "Briskly, Brenda banged brittle brass bells behind Bob's big blueberry bakery before breakfast, bringing bemused barks from barking bulldogs.",
+        "Clattering clowns clumsily clashed cymbals while climbing crooked crates, creating chaotic choruses of cackling crows and crashing coconuts.",
+        "Kooky Kathy kept kicking kinked kites, caught climbing crooked chimneys, while kids kept counting colored crumbs clinging to cardboard castles.",
+        "George’s gigantic giraffe gently jogged around a jittery jungle gym juggling jelly jars and jumping jack-o’-lanterns joyfully.",
+        "Fumbling Felix fixed five flickering fluorescent fixtures with frozen fingers while facing forty furious fireflies flicking flames at his face."
+    ];
 
-  // Function to shuffle the array
-  function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
-
-  // To track the texts used
-  let remainingTwisters = shuffle([...baseTwisters]); // Start with shuffled array
-  let startTime = 0;
-  let utterance = null;
-
-  const originalBox = document.getElementById("originalBox");
-  const typingBox = document.getElementById("typingBox");
-  const highlightBox = document.getElementById("highlightBox");
-  const result = document.getElementById("result");
-  const errorSound = document.getElementById("errorSound");
-
-  // Function to get the next text, ensuring no repetition
-  function getRandomTwister() {
-    if (remainingTwisters.length === 0) {
-      // Once all texts are used, reshuffle and reset the array
-      remainingTwisters = shuffle([...baseTwisters]);
-    }
-    return remainingTwisters.pop(); // Get the last text and remove it from the list
-  }
-
-  // Start the typing test
-  function start() {
-    const currentText = getRandomTwister();
-    originalBox.textContent = currentText;
-
-    typingBox.value = "";
-    highlightBox.innerHTML = "";
-    typingBox.disabled = false;
-    typingBox.focus();
-    result.textContent = "";
-    startTime = Date.now();
-
-    typingBox.removeEventListener('input', handleTyping);
-    typingBox.addEventListener('input', handleTyping);
-  }
-
-  // Handle the typing input and comparison with the original text
-  function handleTyping() {
-    const typed = typingBox.value;
-    let displayHTML = "";
-    const currentText = originalBox.textContent;
-
-    for (let i = 0; i < currentText.length; i++) {
-      if (typed[i] === currentText[i]) {
-        displayHTML += `<span class="correct">${currentText[i]}</span>`;
-      } else if (typed[i] !== undefined) {
-        displayHTML += `<span class="wrong">${currentText[i]}</span>`;
-        if (!typingBox.lastPlayed || Date.now() - typingBox.lastPlayed > 150) {
-          errorSound.play().catch(() => {});
-          typingBox.lastPlayed = Date.now();
+    // Function to shuffle the array
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
         }
-      } else {
-        displayHTML += `<span>${currentText[i]}</span>`;
-      }
+        return array;
     }
 
-    highlightBox.innerHTML = displayHTML;
+    // To track the texts used
+    let remainingTwisters = shuffle([...baseTwisters]); // Start with shuffled array
+    let startTime = 0;
+    let utterance = null;
 
-    if (typed === currentText) {
-      let timeTaken = (Date.now() - startTime) / 1000;
-      let wpm = (currentText.split(" ").length / timeTaken) * 60;
-      result.textContent = `Speed: ${Math.round(wpm)} WPM`;
-      typingBox.disabled = true;
+    const originalBox = document.getElementById("originalBox");
+    const typingBox = document.getElementById("typingBox");
+    const highlightBox = document.getElementById("highlightBox");
+    const result = document.getElementById("result");
+    const errorSound = document.getElementById("errorSound");
 
-      if (utterance === null) {
-        utterance = new SpeechSynthesisUtterance(typed);
-        utterance.onend = function () {
-          utterance = null;
-        };
-        speechSynthesis.speak(utterance);
-      }
+    // Function to get the next text, ensuring no repetition
+    function getRandomTwister() {
+        if (remainingTwisters.length === 0) {
+            // Once all texts are used, reshuffle and reset the array
+            remainingTwisters = shuffle([...baseTwisters]);
+        }
+        return remainingTwisters.pop(); // Get the last text and remove it from the list
     }
-  }
+
+    // Start the typing test
+    function start() {
+        const currentText = getRandomTwister();
+        originalBox.textContent = currentText;
+
+        typingBox.value = "";
+        highlightBox.innerHTML = "";
+        typingBox.disabled = false;
+        typingBox.focus();
+        result.textContent = "";
+        startTime = Date.now();
+
+        typingBox.removeEventListener('input', handleTyping);
+        typingBox.addEventListener('input', handleTyping);
+    }
+
+    // Handle the typing input and comparison with the original text
+    function handleTyping() {
+        const typed = typingBox.value;
+        let displayHTML = "";
+        const currentText = originalBox.textContent;
+
+        for (let i = 0; i < currentText.length; i++) {
+            if (typed[i] === currentText[i]) {
+                displayHTML += `<span class="correct">${currentText[i]}</span>`;
+            } else if (typed[i] !== undefined) {
+                displayHTML += `<span class="wrong">${currentText[i]}</span>`;
+                if (!typingBox.lastPlayed || Date.now() - typingBox.lastPlayed > 150) {
+                    errorSound.play().catch(() => {});
+                    typingBox.lastPlayed = Date.now();
+                }
+            } else {
+                displayHTML += `<span>${currentText[i]}</span>`;
+            }
+        }
+
+        highlightBox.innerHTML = displayHTML;
+
+        if (typed === currentText) {
+            let timeTaken = (Date.now() - startTime) / 1000;
+            let wpm = (currentText.split(" ").length / timeTaken) * 60;
+            result.textContent = `Speed: ${Math.round(wpm)} WPM`;
+            typingBox.disabled = true;
+
+            if (utterance === null) {
+                utterance = new SpeechSynthesisUtterance(typed);
+                utterance.onend = function () {
+                    utterance = null;
+                };
+                speechSynthesis.speak(utterance);
+            }
+        }
+    }
 </script>
 
 </body>
